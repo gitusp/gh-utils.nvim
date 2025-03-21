@@ -17,9 +17,13 @@ function M.merge(args)
   end)
 end
 
-function M.create()
+function M.create(args)
   vim.notify("Opening current PR create page...", vim.log.levels.INFO)
-  vim.system({ 'gh', 'pr', 'create', '-w' }, nil, function(result)
+  local cmd = { 'gh', 'pr', 'create' }
+  for _, arg in ipairs(args) do
+    table.insert(cmd, arg)
+  end
+  vim.system(cmd, nil, function(result)
     if result.code ~= 0 then
       vim.schedule(function()
         vim.notify("Failed to open: " .. result.stderr, vim.log.levels.ERROR)

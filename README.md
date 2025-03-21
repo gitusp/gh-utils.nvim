@@ -23,10 +23,6 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ## Commands
 
-### PRCreate
-
-Open pull request create web page.
-
 ### PRList
 
 Opens pull request list page.
@@ -43,6 +39,10 @@ Open side-by-side diff buffers for reviewing between given branch and HEAD.
 ### PRMerge {args}
 
 Run `gh pr merge` with given args.
+
+### PRCreate {args}
+
+Run `gh pr create` with given args.
 
 ## Health Check
 
