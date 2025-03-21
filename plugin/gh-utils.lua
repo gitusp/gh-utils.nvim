@@ -16,6 +16,10 @@ vim.api.nvim_create_user_command('PRList', function()
   vim.cmd('vnew github-pulls://' .. vim.fn.getcwd())
 end, { desc = 'List pull requests' })
 
+vim.api.nvim_create_user_command('PRCreate', function()
+  require("gh-utils").create()
+end, {})
+
 vim.api.nvim_create_augroup('github', {})
 vim.api.nvim_create_autocmd("BufReadCmd", {
   group = 'github',

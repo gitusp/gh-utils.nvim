@@ -17,6 +17,17 @@ function M.merge(args)
   end)
 end
 
+function M.create()
+  vim.notify("Opening current PR create page...", vim.log.levels.INFO)
+  vim.system({ 'gh', 'pr', 'create', '-w' }, nil, function(result)
+    if result.code ~= 0 then
+      vim.schedule(function()
+        vim.notify("Failed to open: " .. result.stderr, vim.log.levels.ERROR)
+      end)
+    end
+  end)
+end
+
 function M.review(branch)
   local result = vim.system({ 'git', 'merge-base', branch, 'HEAD' }):wait()
   if result.code ~= 0 then

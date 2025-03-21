@@ -11,7 +11,7 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 {
   "gitusp/gh-utils.nvim",
   lazy = true,
-  cmd = { "PRList", "PRReview", "PRMerge" },
+  cmd = { "PRList", "PRReview", "PRMerge", "PRCreate" },
   ft = "github-pulls"
 }
 ```
@@ -22,6 +22,10 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [fugitive.vim](https://github.com/tpope/vim-fugitive)
 
 ## Commands
+
+### PRCreate
+
+Open pull request create web page.
 
 ### PRList
 
