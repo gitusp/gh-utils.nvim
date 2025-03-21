@@ -1,4 +1,4 @@
-local M
+local M = {}
 
 function M.merge(args)
   vim.notify("Merging current PR...", vim.log.levels.INFO)
