@@ -11,7 +11,8 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 {
   "gitusp/gh-utils.nvim",
   lazy = true,
-  cmd = { "PRList", "PRReview" },
+  cmd = { "PRList", "PRReview", "PRMerge" },
+  ft = "github-pulls"
 }
 ```
 
