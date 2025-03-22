@@ -44,6 +44,15 @@ Run `gh pr merge` with given args.
 
 Run `gh pr create` with given args.
 
+## Setting Default Arguments to `PRMerge` and `PRCreate`
+
+Just use `vim.cmd.abbrev`:
+
+```lua
+vim.cmd.abbrev('PRC', 'PRCreate -w')
+vim.cmd.abbrev('PRM', 'PRMerge -d -m')
+```
+
 ## Health Check
 
 Run `:checkhealth gh-utils` to verify that all dependencies are properly installed.
