@@ -88,7 +88,9 @@ function M.init_pulls_buf()
   }
   local _, args = parse_buf_name(vim.fn.expand("%"))
   for _, arg in ipairs(args) do
-    table.insert(cmd, arg)
+    if arg then
+      table.insert(cmd, arg)
+    end
   end
 
   vim.system(cmd, nil, function(result)
