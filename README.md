@@ -49,7 +49,7 @@ Run `gh pr create` with given args.
 Just use `vim.cmd.abbrev`:
 
 ```lua
-vim.cmd.abbrev('PRC', 'PRCreate -w')
+vim.cmd.abbrev('PRC', 'PRCreate -f')
 vim.cmd.abbrev('PRM', 'PRMerge -d -m')
 ```
 

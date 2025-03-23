@@ -24,11 +24,13 @@ function M.create(args)
     table.insert(cmd, arg)
   end
   vim.system(cmd, nil, function(result)
-    if result.code ~= 0 then
-      vim.schedule(function()
+    vim.schedule(function()
+      if result.code == 0 then
+        vim.notify("Successfully opened PR", vim.log.levels.INFO)
+      else
         vim.notify("Failed to open: " .. result.stderr, vim.log.levels.ERROR)
-      end)
-    end
+      end
+    end)
   end)
 end
 
