@@ -4,7 +4,7 @@ local function parse_buf_name(name)
   local wo_proto = string.sub(name, string.len("github-pulls://") + 1, string.len(name))
   local cwd_query = vim.split(wo_proto, "?", { plain = true })
   local cwd = cwd_query[1]
-  local args = vim.split(cwd_query[2], "\\s\\+")
+  local args = vim.split(cwd_query[2], " ", { plain = true })
 
   return cwd, args
 end
@@ -88,7 +88,7 @@ function M.init_pulls_buf()
   }
   local _, args = parse_buf_name(vim.fn.expand("%"))
   for _, arg in ipairs(args) do
-    if arg then
+    if arg ~= '' then
       table.insert(cmd, arg)
     end
   end
