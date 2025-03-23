@@ -4,7 +4,7 @@ local function parse_buf_name(name)
   local wo_proto = string.sub(name, string.len("github-pulls://") + 1, string.len(name))
   local cwd_query = vim.split(wo_proto, "?", { plain = true })
   local cwd = cwd_query[1]
-  local args = vim.split(cwd_query[2], " ", { plain = true })
+  local args = #cwd_query > 1 and vim.split(cwd_query[2], " ", { plain = true }) or {}
 
   return cwd, args
 end

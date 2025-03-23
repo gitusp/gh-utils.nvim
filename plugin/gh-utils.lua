@@ -13,7 +13,8 @@ vim.api.nvim_create_user_command('PRReview', function(opts)
 end, { nargs = 1, desc = 'Open side-by-side diff buffers' })
 
 vim.api.nvim_create_user_command('PRList', function(opts)
-  vim.cmd('vnew github-pulls://' .. vim.fn.getcwd() .. '?' .. opts.args)
+  local suffix = opts.args ~= '' and '?' .. opts.args or ''
+  vim.cmd('vnew github-pulls://' .. vim.fn.getcwd() .. suffix)
 end, { nargs = '*', desc = 'List pull requests' })
 
 vim.api.nvim_create_user_command('PRCreate', function(opts)
