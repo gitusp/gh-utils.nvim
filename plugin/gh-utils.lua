@@ -12,9 +12,9 @@ vim.api.nvim_create_user_command('PRReview', function(opts)
   require("gh-utils").review(opts.args)
 end, { nargs = 1, desc = 'Open side-by-side diff buffers' })
 
-vim.api.nvim_create_user_command('PRList', function()
-  vim.cmd('vnew github-pulls://' .. vim.fn.getcwd())
-end, { desc = 'List pull requests' })
+vim.api.nvim_create_user_command('PRList', function(opts)
+  vim.cmd('vnew github-pulls://' .. vim.fn.getcwd() .. '?' .. opts.args)
+end, { nargs = '*', desc = 'List pull requests' })
 
 vim.api.nvim_create_user_command('PRCreate', function(opts)
   require("gh-utils").create(opts.fargs)
