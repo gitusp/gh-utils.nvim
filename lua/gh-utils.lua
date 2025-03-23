@@ -1,5 +1,14 @@
 local M = {}
 
+local function parse_buf_name(name)
+  local wo_proto = string.sub(name, string.len("github-pulls://") + 1, string.len(name))
+  local cwd_query = vim.split(wo_proto, "?", { plain = true })
+  local cwd = cwd_query[1]
+  local args = vim.split(cwd_query[2], "\\s\\+")
+
+  return cwd, args
+end
+
 function M.merge(args)
   vim.notify("Merging current PR...", vim.log.levels.INFO)
   local cmd = { 'gh', 'pr', 'merge' }
@@ -46,8 +55,7 @@ function M.review(branch)
 end
 
 function M.open_pr(num)
-  local url = vim.fn.expand("%")
-  local cwd = string.sub(url, string.len("github-pulls://") + 1, string.len(url))
+  local cwd, _ = parse_buf_name(vim.fn.expand("%"))
 
   vim.system(
     {'gh', 'pr', 'view', num, '-w'},
@@ -73,11 +81,17 @@ function M.init_pulls_buf()
   vim.api.nvim_set_option_value('swapfile', false, { buf = buf })
   vim.api.nvim_set_option_value('readonly', true, { buf = buf })
 
-  vim.system({
+  local cmd = {
     'gh', 'pr', 'list',
     '--json', 'number,title,author,headRefName,baseRefName',
     '--template', '{{range .}}#{{.number}} [{{.baseRefName}}] <- [{{.headRefName}}]\n{{.title}} by {{.author.login}}\n\n{{end}}'
-  }, nil, function(result)
+  }
+  local _, args = parse_buf_name(vim.fn.expand("%"))
+  for _, arg in ipairs(args) do
+    table.insert(cmd, arg)
+  end
+
+  vim.system(cmd, nil, function(result)
     vim.schedule(function()
       if result.code ~= 0 then
         vim.notify("Failed to get PR list", vim.log.levels.ERROR)
