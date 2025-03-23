@@ -83,8 +83,8 @@ function M.init_pulls_buf()
 
   local cmd = {
     'gh', 'pr', 'list',
-    '--json', 'number,title,author,headRefName,baseRefName',
-    '--template', '{{range .}}#{{.number}} [{{.baseRefName}}] <- [{{.headRefName}}]\n{{.title}} by {{.author.login}}\n\n{{end}}'
+    '--json', 'number,title,author,headRefName,baseRefName,state',
+    '--template', '{{range .}}#{{.number}} [{{.baseRefName}}] <- [{{.headRefName}}]\n{{.title}} by {{.author.login}} ({{.state}})\n\n{{end}}'
   }
   local _, args = parse_buf_name(vim.fn.expand("%"))
   for _, arg in ipairs(args) do
