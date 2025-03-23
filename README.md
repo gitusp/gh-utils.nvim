@@ -23,9 +23,10 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ## Commands
 
-### PRList
+### PRList {args}
 
-Opens pull request list page.
+Opens pull request list page.  
+Given arguments are passed to `gh pr list` command.
 
 | Kaymap | Location         | Keymaps                               |
 |--------|------------------|---------------------------------------|
@@ -38,11 +39,11 @@ Open side-by-side diff buffers for reviewing between given branch and HEAD.
 
 ### PRMerge {args}
 
-Run `gh pr merge` with given args.
+Run `gh pr merge` with given arguments.
 
 ### PRCreate {args}
 
-Run `gh pr create` with given args.
+Run `gh pr create` with given arguments.
 
 ## Setting Default Arguments to `PRMerge` and `PRCreate`
 
