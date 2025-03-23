@@ -39,9 +39,10 @@ DEPENDENCIES                             *gh-utils-gh-utils.nvim-dependencies*
 COMMANDS                                     *gh-utils-gh-utils.nvim-commands*
 
 
-PRLIST ~
+PRLIST {ARGS} ~
 
-Opens pull request list page.
+Opens pull request list page. Given arguments are passed to `gh pr list`
+command.
 
   Kaymap   Location           Keymaps
   -------- ------------------ ---------------------------------------
@@ -55,12 +56,12 @@ Open side-by-side diff buffers for reviewing between given branch and HEAD.
 
 PRMERGE {ARGS} ~
 
-Run `gh pr merge` with given args.
+Run `gh pr merge` with given arguments.
 
 
 PRCREATE {ARGS} ~
 
-Run `gh pr create` with given args.
+Run `gh pr create` with given arguments.
 
 
 SETTING DEFAULT ARGUMENTS TO PRMERGE AND PRCREATE*gh-utils-gh-utils.nvim-setting-default-arguments-to-prmerge-and-prcreate*
