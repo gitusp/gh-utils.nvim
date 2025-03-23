@@ -68,7 +68,7 @@ SETTING DEFAULT ARGUMENTS TO PRMERGE AND PRCREATE*gh-utils-gh-utils.nvim-setting
 Just use `vim.cmd.abbrev`:
 
 >lua
-    vim.cmd.abbrev('PRC', 'PRCreate -w')
+    vim.cmd.abbrev('PRC', 'PRCreate -f')
     vim.cmd.abbrev('PRM', 'PRMerge -d -m')
 <
 
