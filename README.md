@@ -25,7 +25,7 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ### PRList {args}
 
-Opens pull request list page.  
+Opens pull request list buffer.  
 Given arguments are passed to `gh pr list` command.
 
 | Kaymap | Location         | Keymaps                               |
@@ -45,7 +45,7 @@ Run `gh pr merge` with given arguments.
 
 Run `gh pr create` with given arguments.
 
-## Setting Default Arguments to `PRMerge` and `PRCreate`
+## Setting Default Arguments
 
 Just use `vim.cmd.abbrev`:
 
