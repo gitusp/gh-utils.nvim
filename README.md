@@ -25,6 +25,8 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ### PRList {args}
 
+<img height="300" alt="PRList" src="https://github.com/user-attachments/assets/f673d60e-036c-499d-a8c3-0f9c96c4245f" />
+
 Opens pull request list buffer.  
 Given arguments are passed to `gh pr list` command.
 
