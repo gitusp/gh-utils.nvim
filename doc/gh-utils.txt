@@ -41,6 +41,8 @@ COMMANDS                                     *gh-utils-gh-utils.nvim-commands*
 
 PRLIST {ARGS} ~
 
+
+
 Opens pull request list buffer. Given arguments are passed to `gh pr list`
 command.
 
