@@ -1,4 +1,4 @@
-*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 23
+*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 24
 
 ==============================================================================
 Table of Contents                                 *gh-utils-table-of-contents*
@@ -7,7 +7,7 @@ Table of Contents                                 *gh-utils-table-of-contents*
   - Installation                         |gh-utils-gh-utils.nvim-installation|
   - Dependencies                         |gh-utils-gh-utils.nvim-dependencies|
   - Commands                                 |gh-utils-gh-utils.nvim-commands|
-  - Setting Default Arguments to PRMerge and PRCreate|gh-utils-gh-utils.nvim-setting-default-arguments-to-prmerge-and-prcreate|
+  - Setting Default Arguments|gh-utils-gh-utils.nvim-setting-default-arguments|
   - Health Check                         |gh-utils-gh-utils.nvim-health-check|
 
 ==============================================================================
@@ -41,7 +41,7 @@ COMMANDS                                     *gh-utils-gh-utils.nvim-commands*
 
 PRLIST {ARGS} ~
 
-Opens pull request list page. Given arguments are passed to `gh pr list`
+Opens pull request list buffer. Given arguments are passed to `gh pr list`
 command.
 
   Kaymap   Location           Keymaps
@@ -64,7 +64,7 @@ PRCREATE {ARGS} ~
 Run `gh pr create` with given arguments.
 
 
-SETTING DEFAULT ARGUMENTS TO PRMERGE AND PRCREATE*gh-utils-gh-utils.nvim-setting-default-arguments-to-prmerge-and-prcreate*
+SETTING DEFAULT ARGUMENTS   *gh-utils-gh-utils.nvim-setting-default-arguments*
 
 Just use `vim.cmd.abbrev`:
 
