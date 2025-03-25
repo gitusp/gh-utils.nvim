@@ -27,7 +27,7 @@ function M.merge(args)
 end
 
 function M.create(args)
-  vim.notify("Opening current PR create page...", vim.log.levels.INFO)
+  vim.notify("Creating PR for current branch...", vim.log.levels.INFO)
   local cmd = { 'gh', 'pr', 'create' }
   for _, arg in ipairs(args) do
     table.insert(cmd, arg)
@@ -35,9 +35,9 @@ function M.create(args)
   vim.system(cmd, nil, function(result)
     vim.schedule(function()
       if result.code == 0 then
-        vim.notify("Successfully opened PR", vim.log.levels.INFO)
+        vim.notify("Successfully created PR", vim.log.levels.INFO)
       else
-        vim.notify("Failed to open: " .. result.stderr, vim.log.levels.ERROR)
+        vim.notify("Failed to create: " .. result.stderr, vim.log.levels.ERROR)
       end
     end)
   end)
