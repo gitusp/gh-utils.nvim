@@ -1,4 +1,4 @@
-*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 24
+*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 25
 
 ==============================================================================
 Table of Contents                                 *gh-utils-table-of-contents*
@@ -50,6 +50,8 @@ command.
   -------- ------------------ ---------------------------------------
   <CR>     on a PR number     Open the PR web page
   .        on a branch name   Populate cmdline with the branch name
+Also, reloading buffer with `:e` refreshes the list.
+
 
 PRREVIEW {BRANCH} ~
 
