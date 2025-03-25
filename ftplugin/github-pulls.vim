@@ -37,6 +37,7 @@ function! s:PopulateCmdline()
 
         if l:col > 0
           call feedkeys(': origin/' .. l:root_elms[1][:-2] .. "\<c-b>", 'n')
+          return
         endif
       endif
     endif
