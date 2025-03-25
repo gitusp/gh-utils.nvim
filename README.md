@@ -35,6 +35,8 @@ Given arguments are passed to `gh pr list` command.
 | `<CR>` | on a PR number   | Open the PR web page                  |
 | `.`    | on a branch name | Populate cmdline with the branch name |
 
+Also, reloading buffer with `:e` refreshes the list.
+
 ### PRReview {branch}
 
 Open side-by-side diff buffers for reviewing between given branch and HEAD.
