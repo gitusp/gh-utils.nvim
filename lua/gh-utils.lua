@@ -86,25 +86,29 @@ function M.init_pulls_buf()
     '--json', 'number,title,author,headRefName,baseRefName,state',
     '--template', '{{range .}}#{{.number}} [{{.baseRefName}}] <- [{{.headRefName}}]\n{{.title}} by {{.author.login}} ({{.state}})\n\n{{end}}'
   }
-  local _, args = parse_buf_name(vim.fn.expand("%"))
+  local cwd, args = parse_buf_name(vim.fn.expand("%"))
   for _, arg in ipairs(args) do
     if arg ~= '' then
       table.insert(cmd, arg)
     end
   end
 
-  vim.system(cmd, nil, function(result)
-    vim.schedule(function()
-      if result.code ~= 0 then
-        vim.notify("Failed to get PR list", vim.log.levels.ERROR)
-        return
-      end
+  vim.system(
+    cmd,
+    { cwd = cwd },
+    function(result)
+      vim.schedule(function()
+        if result.code ~= 0 then
+          vim.notify("Failed to get PR list", vim.log.levels.ERROR)
+          return
+        end
 
-      vim.api.nvim_set_option_value('readonly', false, { buf = buf })
-      vim.api.nvim_buf_set_lines(buf, 0, 1, false, vim.split(result.stdout:gsub('%s+$', ''), '\n'))
-      vim.api.nvim_set_option_value('readonly', true, { buf = buf })
-    end)
-  end)
+        vim.api.nvim_set_option_value('readonly', false, { buf = buf })
+        vim.api.nvim_buf_set_lines(buf, 0, 1, false, vim.split(result.stdout:gsub('%s+$', ''), '\n'))
+        vim.api.nvim_set_option_value('readonly', true, { buf = buf })
+      end)
+    end
+  )
 end
 
 return M
