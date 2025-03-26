@@ -49,12 +49,12 @@ Open side-by-side diff buffers for reviewing between given branch and HEAD.
 ### PRMerge{!} {args}
 
 Run `gh pr merge` with given arguments.  
-Unless bang `!`, `opts.merge_flags` are appended at the end.  
+Unless bang `!` specified, `opts.merge_flags` are appended at the end.  
 
 ### PRCreate{!} {args}
 
 Run `gh pr create` with given arguments.  
-Unless bang `!`, `opts.create_flags` are appended at the end.  
+Unless bang `!` specified, `opts.create_flags` are appended at the end.  
 
 ## Health Check
 
