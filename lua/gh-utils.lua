@@ -1,5 +1,10 @@
 local M = {}
 
+local options = {
+  merge_flags = {},
+  create_flags = {},
+}
+
 local function parse_buf_name(name)
   local wo_proto = string.sub(name, string.len("github-pulls://") + 1, string.len(name))
   local cwd_query = vim.split(wo_proto, "?", { plain = true })
@@ -9,11 +14,24 @@ local function parse_buf_name(name)
   return cwd, args
 end
 
+function M.setup(opts)
+  if opts.merge_flags then
+    options.merge_flags = opts.merge_flags
+  end
+
+  if opts.create_flags then
+    options.create_flags = opts.create_flags
+  end
+end
+
 function M.merge(args)
   vim.notify("Merging PR...", vim.log.levels.INFO)
   local cmd = { 'gh', 'pr', 'merge' }
   for _, arg in ipairs(args) do
     table.insert(cmd, arg)
+  end
+  for _, flag in ipairs(options.merge_flags) do
+    table.insert(cmd, flag)
   end
   vim.system(cmd, nil, function(result)
     vim.schedule(function()
@@ -31,6 +49,9 @@ function M.create(args)
   local cmd = { 'gh', 'pr', 'create' }
   for _, arg in ipairs(args) do
     table.insert(cmd, arg)
+  end
+  for _, flag in ipairs(options.create_flags) do
+    table.insert(cmd, flag)
   end
   vim.system(cmd, nil, function(result)
     vim.schedule(function()
