@@ -10,7 +10,7 @@ local function parse_buf_name(name)
 end
 
 function M.merge(args)
-  vim.notify("Merging current PR...", vim.log.levels.INFO)
+  vim.notify("Merging PR...", vim.log.levels.INFO)
   local cmd = { 'gh', 'pr', 'merge' }
   for _, arg in ipairs(args) do
     table.insert(cmd, arg)
@@ -27,7 +27,7 @@ function M.merge(args)
 end
 
 function M.create(args)
-  vim.notify("Creating PR for current branch...", vim.log.levels.INFO)
+  vim.notify("Creating PR...", vim.log.levels.INFO)
   local cmd = { 'gh', 'pr', 'create' }
   for _, arg in ipairs(args) do
     table.insert(cmd, arg)
