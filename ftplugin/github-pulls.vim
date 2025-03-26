@@ -19,6 +19,12 @@ function! s:PopulateCmdline()
   if (line('.') - 1) % 3 == 0
     let l:line = getline(".")
     let l:col = col(".")
+    let l:num = matchstr(l:line, '^#\zs\d\+\ze \[')
+    if l:num != '' && l:col < len(l:num) + 2
+      call feedkeys(': ' .. l:num .. "\<c-b>", 'n')
+      return
+    endif
+
     let l:root_elms = split(l:line, "] <- [")
 
     if len(l:root_elms) == 2
@@ -42,6 +48,4 @@ function! s:PopulateCmdline()
       endif
     endif
   endif
-
-  execute "norm! ."
 endfunction

@@ -12,7 +12,12 @@ For [lazy.nvim](https://github.com/folke/lazy.nvim)
   "gitusp/gh-utils.nvim",
   lazy = true,
   cmd = { "PRList", "PRReview", "PRMerge", "PRCreate" },
-  ft = "github-pulls"
+  ft = "github-pulls",
+  -- Configure as you need
+  opts = {
+    merge_flags = { '-d', '-m' },
+    create_flags = { '-f' },
+  },
 }
 ```
 
@@ -41,22 +46,15 @@ Also, reloading buffer with `:e` refreshes the list.
 
 Open side-by-side diff buffers for reviewing between given branch and HEAD.
 
-### PRMerge {args}
+### PRMerge{!} {args}
 
-Run `gh pr merge` with given arguments.
+Run `gh pr merge` with given arguments.  
+Unless bang `!` specified, `opts.merge_flags` are appended at the end.  
 
-### PRCreate {args}
+### PRCreate{!} {args}
 
-Run `gh pr create` with given arguments.
-
-## Setting Default Arguments
-
-Just use `vim.cmd.abbrev`:
-
-```lua
-vim.cmd.abbrev('PRC', 'PRCreate -f')
-vim.cmd.abbrev('PRM', 'PRMerge -d -m')
-```
+Run `gh pr create` with given arguments.  
+Unless bang `!` specified, `opts.create_flags` are appended at the end.  
 
 ## Health Check
 
