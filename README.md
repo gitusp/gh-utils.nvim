@@ -46,15 +46,15 @@ Also, reloading buffer with `:e` refreshes the list.
 
 Open side-by-side diff buffers for reviewing between given branch and HEAD.
 
-### PRMerge {args}
+### PRMerge{!} {args}
 
 Run `gh pr merge` with given arguments.  
-`opts.merge_flags` are appended at the end.
+Unless bang `!`, `opts.merge_flags` are appended at the end.  
 
-### PRCreate {args}
+### PRCreate{!} {args}
 
 Run `gh pr create` with given arguments.  
-`opts.create_flags` are appended at the end.
+Unless bang `!`, `opts.create_flags` are appended at the end.  
 
 ## Health Check
 
