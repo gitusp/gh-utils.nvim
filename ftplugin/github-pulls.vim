@@ -42,6 +42,4 @@ function! s:PopulateCmdline()
       endif
     endif
   endif
-
-  execute "norm! ."
 endfunction
