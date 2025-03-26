@@ -1,4 +1,4 @@
-*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 25
+*gh-utils.txt*            For NVIM v0.8.0           Last change: 2025 March 26
 
 ==============================================================================
 Table of Contents                                 *gh-utils-table-of-contents*
@@ -7,7 +7,6 @@ Table of Contents                                 *gh-utils-table-of-contents*
   - Installation                         |gh-utils-gh-utils.nvim-installation|
   - Dependencies                         |gh-utils-gh-utils.nvim-dependencies|
   - Commands                                 |gh-utils-gh-utils.nvim-commands|
-  - Setting Default Arguments|gh-utils-gh-utils.nvim-setting-default-arguments|
   - Health Check                         |gh-utils-gh-utils.nvim-health-check|
 
 ==============================================================================
@@ -25,7 +24,12 @@ For lazy.nvim <https://github.com/folke/lazy.nvim>
       "gitusp/gh-utils.nvim",
       lazy = true,
       cmd = { "PRList", "PRReview", "PRMerge", "PRCreate" },
-      ft = "github-pulls"
+      ft = "github-pulls",
+      -- Configure as you need
+      opts = {
+        merge_flags = { '-d', '-m' },
+        create_flags = { '-f' },
+      },
     }
 <
 
@@ -58,24 +62,16 @@ PRREVIEW {BRANCH} ~
 Open side-by-side diff buffers for reviewing between given branch and HEAD.
 
 
-PRMERGE {ARGS} ~
+PRMERGE{!} {ARGS} ~
 
-Run `gh pr merge` with given arguments.
-
-
-PRCREATE {ARGS} ~
-
-Run `gh pr create` with given arguments.
+Run `gh pr merge` with given arguments. Unless bang `!` specified,
+`opts.merge_flags` are appended at the end.
 
 
-SETTING DEFAULT ARGUMENTS   *gh-utils-gh-utils.nvim-setting-default-arguments*
+PRCREATE{!} {ARGS} ~
 
-Just use `vim.cmd.abbrev`:
-
->lua
-    vim.cmd.abbrev('PRC', 'PRCreate -f')
-    vim.cmd.abbrev('PRM', 'PRMerge -d -m')
-<
+Run `gh pr create` with given arguments. Unless bang `!` specified,
+`opts.create_flags` are appended at the end.
 
 
 HEALTH CHECK                             *gh-utils-gh-utils.nvim-health-check*
