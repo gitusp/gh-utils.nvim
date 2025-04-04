@@ -1,6 +1,7 @@
 nmap <buffer><silent> gq :q<CR>
 nmap <buffer><silent> <cr> :call <SID>OpenPr()<CR>
-nmap <buffer><silent> . :call <SID>PopulateCmdline()<CR>
+nmap <buffer><silent> . :call <SID>PopulateCmdline('')<CR>
+nmap <buffer><silent> g. :call <SID>PopulateCmdline('origin/')<CR>
 
 function! s:OpenPr()
   if (line('.') - 1) % 3 == 0
@@ -16,7 +17,7 @@ function! s:OpenPr()
   execute "norm! \<cr>"
 endfunction
 
-function! s:PopulateCmdline()
+function! s:PopulateCmdline(prefix)
   if (line('.') - 1) % 3 == 0
     let l:line = getline(".")
     let l:col = col(".")
@@ -36,14 +37,14 @@ function! s:PopulateCmdline()
         let l:col = l:col - len('[') - len(front_elms[1])
 
         if l:col <= 1
-          call feedkeys(': origin/' .. l:front_elms[1] .. "\<c-b>", 'n')
+          call feedkeys(': ' .. a:prefix .. l:front_elms[1] .. "\<c-b>", 'n')
           return
         endif
 
         let l:col = l:col - len("] <- ")
 
         if l:col > 0
-          call feedkeys(': origin/' .. l:root_elms[1][:-2] .. "\<c-b>", 'n')
+          call feedkeys(': ' .. a:prefix .. l:root_elms[1][:-2] .. "\<c-b>", 'n')
           return
         endif
       endif
