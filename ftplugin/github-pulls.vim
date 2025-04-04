@@ -1,3 +1,4 @@
+nmap <buffer><silent> gq :q<CR>
 nmap <buffer><silent> <cr> :call <SID>OpenPr()<CR>
 nmap <buffer><silent> . :call <SID>PopulateCmdline()<CR>
 
